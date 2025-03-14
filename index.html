@@ -1,0 +1,112 @@
+<!-- <!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copiar para Clipboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            background-color: rgb(39, 39, 39);
+            color: white;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Casa Surf</h1>
+
+    <button onclick="copiarCNPJ()">Copiar CNPJ</button>
+
+    <script>
+        function copiarCNPJ() {
+            const texto = 58285641000110;
+            navigator.clipboard.writeText(texto).then(() => {
+                alert("Texto copiado com sucesso!");
+            }).catch(err => {
+                alert("Falha ao copiar o texto.");
+                console.error("Erro ao copiar: ", err);
+            });
+        }
+    </script>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copiar para Clipboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            background-color: rgb(39, 39, 39);
+            color: white;
+            border-radius: 5px;
+        }
+        .toaster {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px 20px;
+            border-radius: 5px;
+            color: white;
+            font-size: 14px;
+            display: none;
+        }
+        .success { background-color: green; }
+        .error { background-color: red; }
+    </style>
+</head>
+<body>
+    <h1>Casa Surf</h1>
+    <button onclick="copiarCNPJ()">Copiar CNPJ</button>
+    <div id="toaster" class="toaster"></div>
+    <script>
+        function mostrarToaster(mensagem, tipo) {
+            const toaster = document.getElementById("toaster");
+            toaster.textContent = mensagem;
+            toaster.className = `toaster ${tipo}`;
+            toaster.style.display = "block";
+            setTimeout(() => { toaster.style.display = "none"; }, 3000);
+        }
+
+        function copiarCNPJ() {
+            const texto = "58285641000110";
+            navigator.clipboard.writeText(texto).then(() => {
+                mostrarToaster("CNPJ copiado!", "success");
+            }).catch(err => {
+                mostrarToaster("Erro ao copiar CNPJ.", "error");
+                console.error("Erro ao copiar: ", err);
+            });
+        }
+    </script>
+</body>
+</html>
